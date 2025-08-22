@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "module": "Preserve",
+    "outDir": "dist",
+    "rootDir": "src",
+    "incremental": true,
+    "lib": ["ES2022.Regexp"],
+    "target": "ESNext",
+    "declaration": true
+  },
+  "include": ["src"]
+}
