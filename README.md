@@ -69,7 +69,7 @@ const editorState = EditorState.create({
 
 ## Differences from `prosemirror-inputrules`
 
-The primary behavior difference from `prosemirror-inputrules` is that this library actually applies the text that triggers its rules before executing the rules. In the first example, we had thi following rule:
+The primary behavior difference from `prosemirror-inputrules` is that this library actually applies the text that triggers its rules before executing the rules. In the first example, we had the following rule:
 
 ```ts
 new InputRule(/->\s/, "→ ");
