@@ -1,6 +1,6 @@
 {
   "name": "@handlewithcare/prosemirror-inputrules",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "license": "MIT",
   "packageManager": "yarn@4.9.3",
@@ -22,10 +22,10 @@
     "@types/node": "^24.3.0",
     "@yarnpkg/sdks": "^3.2.3",
     "prettier": "^3.6.2",
-    "prosemirror-history": "^1.4.1",
     "prosemirror-keymap": "^1.2.3",
     "prosemirror-model": "^1.25.3",
     "prosemirror-schema-basic": "^1.2.4",
+    "prosemirror-schema-list": "^1.5.1",
     "prosemirror-state": "^1.4.3",
     "prosemirror-view": "^1.40.1",
     "typescript": "^5.9.2",
@@ -37,6 +37,7 @@
     "prosemirror-view": "^1.0.0"
   },
   "dependencies": {
+    "prosemirror-history": "^1.4.1",
     "prosemirror-transform": "^1.0.0"
   },
   "publishConfig": {

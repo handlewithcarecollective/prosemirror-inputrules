@@ -1,3 +1,4 @@
+import { closeHistory } from "prosemirror-history";
 import {
   Plugin,
   Transaction,
@@ -186,6 +187,7 @@ function run(
     if (!tr) continue;
 
     view.dispatch(insertTr);
+    view.dispatch(closeHistory(view.state.tr));
     if (rule.undoable)
       tr.setMeta(plugin, {
         transform: tr,

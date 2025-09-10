@@ -1,12 +1,23 @@
 import { EditorState } from "prosemirror-state";
-import { schema } from "prosemirror-schema-basic";
-import { inputRules, markTypeInputRule } from "../src/index.js";
+import { addListNodes } from "prosemirror-schema-list";
+import { schema as basicSchema } from "prosemirror-schema-basic";
+import {
+  inputRules,
+  markTypeInputRule,
+  wrappingInputRule,
+} from "../src/index.js";
 import { EditorView } from "prosemirror-view";
 import { history, redo, undo } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 
 import "prosemirror-view/style/prosemirror.css";
 import "./main.css";
+import { Schema } from "prosemirror-model";
+
+const schema = new Schema({
+  nodes: addListNodes(basicSchema.spec.nodes, "paragraph+", "block"),
+  marks: basicSchema.spec.marks,
+});
 
 const state = EditorState.create({
   schema,
@@ -22,6 +33,7 @@ const state = EditorState.create({
           /(?<prefix>^|\s)_(?<content>[^_]+)_/d,
           schema.marks.em,
         ),
+        wrappingInputRule(/^\s*([-+*])\s$/, schema.nodes.bullet_list),
       ],
     }),
   ],
