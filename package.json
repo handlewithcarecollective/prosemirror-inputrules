@@ -1,9 +1,9 @@
 {
   "name": "@handlewithcare/prosemirror-inputrules",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "license": "MIT",
-  "packageManager": "yarn@4.9.3",
+  "packageManager": "yarn@4.10.3",
   "module": "dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
