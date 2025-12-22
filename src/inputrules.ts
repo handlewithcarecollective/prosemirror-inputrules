@@ -157,8 +157,8 @@ function run(
   const mappedFrom = insertTr.mapping.map(from);
   const mappedTo = insertTr.mapping.map(to);
 
-  let state = view.state.apply(insertTr),
-    $from = state.doc.resolve(mappedFrom);
+  let state: EditorState | null = null,
+    $from = insertTr.doc.resolve(mappedFrom);
 
   let textBefore = $from.parent.textBetween(
     Math.max(0, $from.parentOffset - MAX_MATCH),
@@ -178,11 +178,11 @@ function run(
     }
 
     let match = rule.match.exec(textBefore);
+    if (!match || match[0].length < text.length) continue;
 
-    let tr =
-      match &&
-      match[0].length >= text.length &&
-      rule.handler(state, match, mappedFrom - match[0].length, mappedTo);
+    state ??= view.state.apply(insertTr);
+
+    let tr = rule.handler(state, match, mappedFrom - match[0].length, mappedTo);
 
     if (!tr) continue;
 
